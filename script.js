@@ -1,7 +1,7 @@
 const tracks = [
-    { title: "Midnight Dreams", artist: "Luna Wave", file: "track1.mp3", duration: "2:33" },
-    { title: "Neon Lights", artist: "DJ Phantom", file: "track2.mp3", duration: "1:54" },
-    { title: "Lost in You", artist: "Sarah K.", file: "track3.mp3", duration: "2:10" }
+    { title: "Sold Out", artist: "Friendlythug52ngg", file: "track1.mp3", duration: "3:24" },
+    { title: "Lost Angeles", artist: "Friendlythug52ngg", file: "track2.mp3", duration: "2:58" },
+    { title: "Cow", artist: "Friendlythug52ngg", file: "track3.mp3", duration: "4:12" }
 ];
 
 let currentTrackIndex = 0;
@@ -52,13 +52,13 @@ function renderTrackListWithPlay(containerId) {
         const trackEl = document.createElement('div');
         trackEl.className = 'track-item';
         trackEl.innerHTML = `
-    <div>
-        <div class="track-title">${track.title}</div>
-        <div class="track-artist">${track.artist}</div>
-    </div>
-    <div class="track-duration">${track.duration || '3:00'}</div>
-    <button class="play-track-btn" data-index="${index}">▶</button>
-`;
+            <div>
+                <div class="track-title">${track.title}</div>
+                <div class="track-artist">${track.artist}</div>
+            </div>
+            <div class="track-duration">${track.duration || '3:00'}</div>
+            <button class="play-track-btn" data-index="${index}">▶</button>
+        `;
         trackEl.querySelector('.play-track-btn').addEventListener('click', (e) => {
             e.stopPropagation();
             loadTrack(index);

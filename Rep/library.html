@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека — ShneyneWataFy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎵 ShneyneWataFy</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="library.html" class="active">Библиотека</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Моя библиотека</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Поиск по трекам..." onkeyup="filterTracks()">
+        </div>
+        <div class="genre-filter">
+            <button class="filter-btn active" data-genre="all">Все</button>
+            <button class="filter-btn" data-genre="pop">Поп</button>
+            <button class="filter-btn" data-genre="rock">Рок</button>
+            <button class="filter-btn" data-genre="electronic">Электроника</button>
+        </div>
+        <div class="track-list" id="libraryTrackList"></div>
+    </main>
+
+    <div class="player">
+        <div class="player-info">
+            <span id="currentTrack">Выберите трек</span>
+            <span id="currentArtist"></span>
+        </div>
+        <div class="player-controls">
+            <button id="playBtn">▶</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const libraryTracks = [
+            { title: "Midnight Dreams", artist: "Luna Wave", duration: "3:24", genre: "electronic" },
+            { title: "Neon Lights", artist: "DJ Phantom", duration: "2:58", genre: "electronic" },
+            { title: "Lost in You", artist: "Sarah K.", duration: "4:12", genre: "pop" },
+            { title: "Rise Up", artist: "The Storm", duration: "3:45", genre: "rock" },
+            { title: "Summer Breeze", artist: "Coastline", duration: "3:02", genre: "pop" },
+            { title: "Thunderstruck", artist: "Metal Dawn", duration: "5:10", genre: "rock" }
+        ];
+        window.libraryTracks = libraryTracks;
+        renderTrackList(libraryTracks, 'libraryTrackList');
+        setupPlayer();
+        
+        window.filterTracks = function() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const activeGenre = document.querySelector('.filter-btn.active')?.dataset.genre || 'all';
+            let filtered = libraryTracks;
+            if (activeGenre !== 'all') {
+                filtered = filtered.filter(t => t.genre === activeGenre);
+            }
+            if (search) {
+                filtered = filtered.filter(t => t.title.toLowerCase().includes(search) || t.artist.toLowerCase().includes(search));
+            }
+            renderTrackList(filtered, 'libraryTrackList');
+        };
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterTracks();
+            });
+        });
+    </script>
+</body>
+</html>

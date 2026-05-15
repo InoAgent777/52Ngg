@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShneyneWataFy — Музыкальная платформа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎵 ShneyneWataFy</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Музыка без границ</h1>
+            <p>Миллионы треков, плейлистов и подкастов. Слушай что хочешь, когда хочешь.</p>
+            <button class="btn-primary" onclick="location.href='library.html'">Начать слушать</button>
+        </section>
+
+        <section class="popular-tracks">
+            <h2>🔥 Популярные треки</h2>
+            <div class="track-list" id="popularTrackList"></div>
+        </section>
+
+        <section class="playlists">
+            <h2>📀 Популярные плейлисты</h2>
+            <div class="playlist-grid">
+                <div class="playlist-card">🔥 Хиты недели</div>
+                <div class="playlist-card">🎸 Рок классика</div>
+                <div class="playlist-card">🎧 Релакс</div>
+                <div class="playlist-card">🏋️ Спорт</div>
+            </div>
+        </section>
+    </main>
+
+    <div class="player">
+        <div class="player-info">
+            <span id="currentTrack">Выберите трек</span>
+            <span id="currentArtist"></span>
+        </div>
+        <div class="player-controls">
+            <button id="playBtn">▶</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const popularTracks = [
+            { title: "Midnight Dreams", artist: "Luna Wave", duration: "3:24" },
+            { title: "Neon Lights", artist: "DJ Phantom", duration: "2:58" },
+            { title: "Lost in You", artist: "Sarah K.", duration: "4:12" },
+            { title: "Rise Up", artist: "The Storm", duration: "3:45" }
+        ];
+        renderTrackList(popularTracks, 'popularTrackList');
+        setupPlayer();
+    </script>
+</body>
+</html>

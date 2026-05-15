@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль — ShneyneWataFy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎵 ShneyneWataFy</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+                <li><a href="profile.html" class="active">Профиль</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Вход в аккаунт</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Пароль" required>
+                    <div id="loginError" class="error-msg"></div>
+                    <button type="submit" class="btn-primary">Войти</button>
+                </form>
+                <p class="auth-switch">Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email.includes('@') || email.length < 5) {
+                loginError.textContent = 'Введите корректный email';
+                return;
+            }
+            if (password.length < 4) {
+                loginError.textContent = 'Пароль должен быть не менее 4 символов';
+                return;
+            }
+            loginError.textContent = '';
+            alert('Успешный вход! Добро пожаловать в ShneyneWataFy');
+            loginError.style.color = 'green';
+            loginError.textContent = 'Вход выполнен!';
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Библиотека — ShneyneWataFy</title>
+    <title>Профиль — ShneyneWataFy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,71 +12,49 @@
             <div class="logo">🎵 ShneyneWataFy</div>
             <ul class="nav-links">
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="library.html" class="active">Библиотека</a></li>
-                <li><a href="profile.html">Профиль</a></li>
+                <li><a href="library.html">Библиотека</a></li>
+                <li><a href="profile.html" class="active">Профиль</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container">
-        <h1>Моя библиотека</h1>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Поиск по трекам..." onkeyup="filterTracks()">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Вход в аккаунт</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Пароль" required>
+                    <div id="loginError" class="error-msg"></div>
+                    <button type="submit" class="btn-primary">Войти</button>
+                </form>
+                <p class="auth-switch">Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a></p>
+            </div>
         </div>
-        <div class="genre-filter">
-            <button class="filter-btn active" data-genre="all">Все</button>
-            <button class="filter-btn" data-genre="pop">Поп</button>
-            <button class="filter-btn" data-genre="rock">Рок</button>
-            <button class="filter-btn" data-genre="electronic">Электроника</button>
-        </div>
-        <div class="track-list" id="libraryTrackList"></div>
     </main>
-
-    <div class="player">
-        <div class="player-info">
-            <span id="currentTrack">Выберите трек</span>
-            <span id="currentArtist"></span>
-        </div>
-        <div class="player-controls">
-            <button id="prevBtn">⏮</button>
-            <button id="playBtn">▶</button>
-            <button id="nextBtn">⏭</button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
     <script>
-        const libraryTracks = [
-            { title: "Midnight Dreams", artist: "Luna Wave", duration: "3:24", genre: "electronic" },
-            { title: "Neon Lights", artist: "DJ Phantom", duration: "2:58", genre: "electronic" },
-            { title: "Lost in You", artist: "Sarah K.", duration: "4:12", genre: "pop" },
-            { title: "Rise Up", artist: "The Storm", duration: "3:45", genre: "rock" },
-            { title: "Summer Breeze", artist: "Coastline", duration: "3:02", genre: "pop" },
-            { title: "Thunderstruck", artist: "Metal Dawn", duration: "5:10", genre: "rock" }
-        ];
-        window.libraryTracks = libraryTracks;
-        renderTrackList(libraryTracks, 'libraryTrackList');
-        setupPlayer();
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
         
-        window.filterTracks = function() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const activeGenre = document.querySelector('.filter-btn.active')?.dataset.genre || 'all';
-            let filtered = libraryTracks;
-            if (activeGenre !== 'all') {
-                filtered = filtered.filter(t => t.genre === activeGenre);
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email.includes('@') || email.length < 5) {
+                loginError.textContent = 'Введите корректный email';
+                return;
             }
-            if (search) {
-                filtered = filtered.filter(t => t.title.toLowerCase().includes(search) || t.artist.toLowerCase().includes(search));
+            if (password.length < 4) {
+                loginError.textContent = 'Пароль должен быть не менее 4 символов';
+                return;
             }
-            renderTrackList(filtered, 'libraryTrackList');
-        };
-        
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                filterTracks();
-            });
+            loginError.textContent = '';
+            alert('Успешный вход! Добро пожаловать в ShneyneWataFy');
+            loginError.style.color = 'green';
+            loginError.textContent = 'Вход выполнен!';
         });
     </script>
 </body>

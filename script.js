@@ -1,7 +1,7 @@
 const tracks = [
-    { title: "Sold Out", artist: "Friendlythug52ngg", file: "track1.mp3", duration: "3:24" },
-    { title: "Lost Angeles", artist: "Friendlythug52ngg", file: "track2.mp3", duration: "2:58" },
-    { title: "Cow", artist: "Friendlythug52ngg", file: "track3.mp3", duration: "4:12" }
+    { title: "Sold Out", artist: "Friendlythug52ngg", file: "track1.mp3", duration: "2:33" },
+    { title: "Lost Angeles", artist: "Friendlythug52ngg", file: "track2.mp3", duration: "1:54" },
+    { title: "Cow", artist: "Friendlythug52ngg", file: "track3.mp3", duration: "2:10" }
 ];
 
 let currentTrackIndex = 0;

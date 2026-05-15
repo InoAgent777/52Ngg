@@ -52,12 +52,13 @@ function renderTrackListWithPlay(containerId) {
         const trackEl = document.createElement('div');
         trackEl.className = 'track-item';
         trackEl.innerHTML = `
-            <div>
-                <div class="track-title">${track.title}</div>
-                <div class="track-artist">${track.artist}</div>
-            </div>
-            <button class="play-track-btn" data-index="${index}">▶</button>
-        `;
+    <div>
+        <div class="track-title">${track.title}</div>
+        <div class="track-artist">${track.artist}</div>
+    </div>
+    <div class="track-duration">${track.duration || '3:00'}</div>
+    <button class="play-track-btn" data-index="${index}">▶</button>
+`;
         trackEl.querySelector('.play-track-btn').addEventListener('click', (e) => {
             e.stopPropagation();
             loadTrack(index);

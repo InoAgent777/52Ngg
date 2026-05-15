@@ -1,7 +1,7 @@
 const tracks = [
-    { title: "Sold Out", artist: "FriendlyThug52Ngg", file: "track1.mp3" },
-    { title: "Lost Angeles", artist: "FriendlyThug52Ngg", file: "track2.mp3" },
-    { title: "Cow", artist: "FriendlyThug52Ngg", file: "track3.mp3" }
+    { title: "Midnight Dreams", artist: "Luna Wave", file: "track1.mp3", duration: "2:33" },
+    { title: "Neon Lights", artist: "DJ Phantom", file: "track2.mp3", duration: "1:54" },
+    { title: "Lost in You", artist: "Sarah K.", file: "track3.mp3", duration: "2:10" }
 ];
 
 let currentTrackIndex = 0;
